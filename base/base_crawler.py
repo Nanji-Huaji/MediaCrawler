@@ -115,9 +115,9 @@ class ExportMixin:
         record = item.model_dump() if hasattr(item, "model_dump") else dict(item)
         self._result_buffer.append(record)
 
-    def export_result(self) -> str:
+    def export_result(self) -> str | None:
         if not getattr(self, "_result_buffer", None):
-            return ""  # 无数据直接返回空字符串
+            return None  # 如果没有结果缓存，直接返回 None
 
         df = pd.DataFrame(self._result_buffer)
         data_dir = Path(__file__).resolve().parent.parent / "data"
