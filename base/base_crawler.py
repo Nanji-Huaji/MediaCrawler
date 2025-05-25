@@ -115,7 +115,7 @@ class ExportMixin:
         record = item.model_dump() if hasattr(item, "model_dump") else dict(item)
         self._result_buffer.append(record)
 
-    def export_result(self) -> str | None:
+    def export_result(self):
         if not getattr(self, "_result_buffer", None):
             return None  # 如果没有结果缓存，直接返回 None
 
@@ -129,4 +129,5 @@ class ExportMixin:
 
         # 清空缓存，为潜在下一轮爬取做准备
         self._result_buffer.clear()
+        print(f"返回结果文件路径: {str(file_path)}")
         return str(file_path)
