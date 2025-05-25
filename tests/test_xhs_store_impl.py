@@ -34,4 +34,4 @@ async def test_save_data_to_csv_simple():
         assert rows[0] == list(save_item.keys())
         assert rows[1] == [str(v) for v in save_item.values()]
 
-    shutil.rmtree(test_dir, onerror=on_rm_error)
+    shutil.rmtree(test_dir)
